@@ -5,10 +5,14 @@ We use plain sqlite3 (no ORM) to keep things simple and visible.
 Each request gets its own connection via a FastAPI dependency.
 """
 
+import os
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path(__file__).parent.parent / "exitvote.db"
+# DB_PATH can be overridden via the DATABASE_URL env var (Railway sets this automatically
+# if you attach a volume). Falls back to a local file for development.
+_default = Path(__file__).parent.parent / "exitvote.db"
+DB_PATH = Path(os.environ.get("DATABASE_PATH", str(_default)))
 
 
 def get_connection(db_path: Path = DB_PATH) -> sqlite3.Connection:
