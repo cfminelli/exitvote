@@ -54,8 +54,10 @@ def create_room(
     code = _make_room_code(conn)
     with conn:
         conn.execute(
-            "INSERT INTO rooms (code, event_name, created_at, expires_at) VALUES (?, ?, ?, ?)",
-            (code, body.event_name, now.isoformat(), expires_at.isoformat()),
+            """INSERT INTO rooms (code, event_name, created_at, expires_at, leave_threshold, vote_cooldown)
+               VALUES (?, ?, ?, ?, ?, ?)""",
+            (code, body.event_name, now.isoformat(), expires_at.isoformat(),
+             body.leave_threshold, body.vote_cooldown),
         )
 
     return RoomResponse(
@@ -64,6 +66,8 @@ def create_room(
         created_at=now.isoformat(),
         expires_at=expires_at.isoformat(),
         member_count=0,
+        leave_threshold=body.leave_threshold,
+        vote_cooldown=body.vote_cooldown,
     )
 
 
@@ -86,6 +90,8 @@ def join_room(
         code=room["code"],
         event_name=room["event_name"],
         member_token=token,
+        leave_threshold=room["leave_threshold"],
+        vote_cooldown=room["vote_cooldown"],
     )
 
 
@@ -106,4 +112,6 @@ def get_room(
         created_at=room["created_at"],
         expires_at=room["expires_at"],
         member_count=member_count,
+        leave_threshold=room["leave_threshold"],
+        vote_cooldown=room["vote_cooldown"],
     )

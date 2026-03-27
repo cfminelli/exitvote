@@ -29,11 +29,13 @@ def init_db(db_path: Path = DB_PATH) -> None:
     with conn:
         conn.executescript("""
             CREATE TABLE IF NOT EXISTS rooms (
-                id          INTEGER PRIMARY KEY AUTOINCREMENT,
-                code        TEXT NOT NULL UNIQUE,
-                event_name  TEXT NOT NULL,
-                created_at  TEXT NOT NULL DEFAULT (datetime('now')),
-                expires_at  TEXT NOT NULL
+                id                  INTEGER PRIMARY KEY AUTOINCREMENT,
+                code                TEXT NOT NULL UNIQUE,
+                event_name          TEXT NOT NULL,
+                created_at          TEXT NOT NULL DEFAULT (datetime('now')),
+                expires_at          TEXT NOT NULL,
+                leave_threshold     INTEGER NOT NULL DEFAULT 51,
+                vote_cooldown       INTEGER NOT NULL DEFAULT 0
             );
 
             CREATE TABLE IF NOT EXISTS members (
@@ -47,6 +49,7 @@ def init_db(db_path: Path = DB_PATH) -> None:
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
                 member_id   INTEGER NOT NULL UNIQUE REFERENCES members(id),
                 choice      TEXT NOT NULL CHECK(choice IN ('stay', 'leave')),
+                reason      TEXT,
                 voted_at    TEXT NOT NULL DEFAULT (datetime('now'))
             );
         """)

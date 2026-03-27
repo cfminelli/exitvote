@@ -19,247 +19,193 @@
       padding: 24px;
     }
 
-    /* ── Logo ── */
-    .logo {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 8px;
-    }
+    .logo { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 6px; }
     .logo span { color: #a78bfa; }
-
-    .tagline {
-      color: #6b7280;
-      font-size: 0.95rem;
-      margin-bottom: 40px;
-      text-align: center;
-    }
+    .tagline { color: #6b7280; font-size: 0.9rem; margin-bottom: 36px; text-align: center; }
 
     /* ── Card ── */
     .card {
       background: #13131a;
       border: 1px solid #1f1f2e;
       border-radius: 20px;
-      padding: 32px;
+      padding: 28px;
       width: 100%;
       max-width: 420px;
       box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     }
 
-    h2 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      color: #e2e2ee;
-    }
+    h2 { font-size: 1rem; font-weight: 600; margin-bottom: 16px; color: #e2e2ee; }
+    h3 { font-size: 0.85rem; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
 
     /* ── Inputs ── */
-    input {
+    input[type=text] {
       width: 100%;
       background: #0a0a0f;
       border: 1px solid #2a2a3e;
       border-radius: 12px;
       color: #f0f0f5;
       font-size: 1rem;
-      padding: 14px 16px;
+      padding: 13px 16px;
       outline: none;
       transition: border-color 0.2s;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-    input:focus { border-color: #a78bfa; }
-    input::placeholder { color: #4b5563; }
+    input[type=text]:focus { border-color: #a78bfa; }
+    input[type=text]::placeholder { color: #4b5563; }
+
+    /* ── Rules section ── */
+    .rules-section {
+      border: 1px solid #1f1f2e;
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .rule-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .rule-row:last-child { margin-bottom: 0; }
+    .rule-label { font-size: 0.875rem; color: #d1d5db; }
+    .rule-label small { display: block; color: #6b7280; font-size: 0.75rem; margin-top: 2px; }
+
+    /* Segmented controls */
+    .seg { display: flex; gap: 4px; background: #0a0a0f; border-radius: 10px; padding: 4px; }
+    .seg button {
+      flex: 1; border: none; border-radius: 7px; cursor: pointer;
+      font-size: 0.8rem; font-weight: 600; padding: 7px 10px;
+      background: transparent; color: #6b7280; transition: all 0.15s;
+    }
+    .seg button.active { background: #a78bfa; color: #0a0a0f; }
 
     /* ── Buttons ── */
     .btn {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 14px;
+      width: 100%; border: none; border-radius: 12px; cursor: pointer;
+      font-size: 1rem; font-weight: 600; padding: 14px;
       transition: opacity 0.15s, transform 0.1s;
     }
     .btn:active { transform: scale(0.98); }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
     .btn-primary { background: #a78bfa; color: #0a0a0f; }
     .btn-primary:hover:not(:disabled) { opacity: 0.9; }
-
     .btn-outline {
-      background: transparent;
-      border: 1px solid #2a2a3e;
-      color: #a78bfa;
-      margin-top: 8px;
+      background: transparent; border: 1px solid #2a2a3e; color: #a78bfa; margin-top: 8px;
     }
     .btn-outline:hover:not(:disabled) { border-color: #a78bfa; background: #1a1a2e; }
 
     /* ── Divider ── */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 20px 0;
-      color: #374151;
-      font-size: 0.85rem;
-    }
-    .divider::before, .divider::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: #1f1f2e;
-    }
+    .divider { display: flex; align-items: center; gap: 12px; margin: 18px 0; color: #374151; font-size: 0.85rem; }
+    .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: #1f1f2e; }
 
     /* ── Room code badge ── */
-    .room-code {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-    .room-code .label { font-size: 0.8rem; color: #6b7280; margin-bottom: 6px; }
-    .room-code .code {
-      font-size: 2.4rem;
-      font-weight: 800;
-      letter-spacing: 6px;
-      color: #a78bfa;
-    }
-    .room-code .event { font-size: 0.9rem; color: #9ca3af; margin-top: 4px; }
+    .room-code { text-align: center; margin-bottom: 20px; }
+    .room-code .label { font-size: 0.8rem; color: #6b7280; margin-bottom: 4px; }
+    .room-code .code { font-size: 2.2rem; font-weight: 800; letter-spacing: 6px; color: #a78bfa; }
+    .room-code .event { font-size: 0.875rem; color: #9ca3af; margin-top: 4px; }
+
+    .share-row { display: flex; gap: 8px; margin-bottom: 20px; }
+    .share-row input { margin: 0; font-size: 0.8rem; color: #a78bfa; cursor: pointer; }
+    .share-row .btn { width: auto; padding: 0 14px; font-size: 0.8rem; white-space: nowrap; margin: 0; }
 
     /* ── Vote buttons ── */
-    .vote-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 20px 0;
-    }
+    .vote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
     .vote-btn {
-      border: 2px solid transparent;
-      border-radius: 16px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 20px 12px;
-      text-align: center;
-      transition: all 0.2s;
+      border: 2px solid transparent; border-radius: 16px; cursor: pointer;
+      font-size: 1rem; font-weight: 700; padding: 18px 12px; text-align: center;
+      transition: all 0.2s; background: none;
     }
     .vote-btn:active { transform: scale(0.96); }
-    .vote-btn.stay {
-      background: #0d2818;
-      border-color: #166534;
-      color: #4ade80;
-    }
+    .vote-btn .emoji { font-size: 1.6rem; display: block; margin-bottom: 4px; }
+    .vote-btn.stay { background: #0d2818; border-color: #166534; color: #4ade80; }
     .vote-btn.stay:hover { background: #14532d; }
-    .vote-btn.stay.selected {
-      background: #166534;
-      border-color: #4ade80;
-      box-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
-    }
-    .vote-btn.leave {
-      background: #2d0d0d;
-      border-color: #991b1b;
-      color: #f87171;
-    }
+    .vote-btn.stay.selected { background: #166534; border-color: #4ade80; box-shadow: 0 0 20px rgba(74,222,128,0.2); }
+    .vote-btn.leave { background: #2d0d0d; border-color: #991b1b; color: #f87171; }
     .vote-btn.leave:hover { background: #7f1d1d; }
-    .vote-btn.leave.selected {
-      background: #991b1b;
-      border-color: #f87171;
-      box-shadow: 0 0 20px rgba(248, 113, 113, 0.2);
+    .vote-btn.leave.selected { background: #991b1b; border-color: #f87171; box-shadow: 0 0 20px rgba(248,113,113,0.2); }
+
+    /* ── Reason buttons ── */
+    .reason-section { margin-bottom: 16px; animation: slideDown 0.2s ease; }
+    @keyframes slideDown { from { opacity:0; transform: translateY(-8px); } to { opacity:1; transform: translateY(0); } }
+    .reason-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .reason-btn {
+      border: 1px solid #2a2a3e; border-radius: 99px; background: #0a0a0f;
+      color: #9ca3af; cursor: pointer; font-size: 0.8rem; padding: 7px 14px;
+      transition: all 0.15s;
     }
-    .vote-btn .emoji { font-size: 1.8rem; display: block; margin-bottom: 6px; }
+    .reason-btn:hover { border-color: #f87171; color: #f87171; }
+    .reason-btn.selected { border-color: #f87171; background: #2d0d0d; color: #f87171; }
+
+    /* ── Cooldown notice ── */
+    .cooldown-notice {
+      background: #1a1510; border: 1px solid #78350f; border-radius: 10px;
+      color: #fbbf24; font-size: 0.8rem; padding: 10px 14px; margin-bottom: 12px;
+      display: none;
+    }
 
     /* ── Results ── */
-    .results {
-      margin-top: 20px;
-    }
+    .results { margin-top: 4px; }
+
+    /* Verdict with animation */
     .verdict {
-      text-align: center;
-      font-size: 1rem;
-      font-weight: 700;
-      padding: 12px;
-      border-radius: 12px;
-      margin-bottom: 16px;
-      background: #1a1a2e;
+      text-align: center; font-size: 1rem; font-weight: 700;
+      padding: 12px; border-radius: 12px; margin-bottom: 14px;
+      background: #1a1a2e; transition: all 0.4s ease;
     }
     .verdict.leave { background: #2d0d0d; color: #f87171; }
     .verdict.stay  { background: #0d2818; color: #4ade80; }
     .verdict.tie   { background: #1a1510; color: #fbbf24; }
     .verdict.none  { color: #6b7280; }
+    .verdict.pop { animation: verdictPop 0.5s cubic-bezier(0.34,1.56,0.64,1); }
+    @keyframes verdictPop {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.06); }
+      100% { transform: scale(1); }
+    }
+    .verdict.flip { animation: verdictFlip 0.4s ease; }
+    @keyframes verdictFlip {
+      0%   { opacity: 1; transform: rotateX(0deg); }
+      50%  { opacity: 0; transform: rotateX(90deg); }
+      100% { opacity: 1; transform: rotateX(0deg); }
+    }
 
-    .bar-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 8px;
-      font-size: 0.875rem;
+    /* Decision reached banner */
+    .decision-banner {
+      display: none; text-align: center; font-size: 0.8rem; font-weight: 700;
+      padding: 8px 12px; border-radius: 8px; margin-bottom: 12px;
+      background: #14532d; color: #4ade80; letter-spacing: 0.05em;
+      animation: pulse 2s infinite;
     }
-    .bar-label { width: 48px; text-align: right; color: #9ca3af; }
-    .bar-track {
-      flex: 1;
-      background: #1f1f2e;
-      border-radius: 99px;
-      height: 10px;
-      overflow: hidden;
+    .decision-banner.leave { background: #7f1d1d; color: #f87171; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.7; } }
+
+    /* Threshold label */
+    .threshold-label {
+      text-align: center; font-size: 0.75rem; color: #4b5563; margin-bottom: 12px;
     }
-    .bar-fill {
-      height: 100%;
-      border-radius: 99px;
-      transition: width 0.5s ease;
-    }
+
+    /* Bars */
+    .bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 0.875rem; }
+    .bar-label { width: 46px; text-align: right; color: #9ca3af; }
+    .bar-track { flex: 1; background: #1f1f2e; border-radius: 99px; height: 10px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 99px; transition: width 0.5s ease; }
     .bar-fill.stay  { background: #4ade80; }
     .bar-fill.leave { background: #f87171; }
     .bar-count { width: 28px; color: #6b7280; font-size: 0.8rem; }
 
-    .members-count {
-      text-align: center;
-      font-size: 0.8rem;
-      color: #4b5563;
-      margin-top: 12px;
-    }
+    /* Reasons breakdown */
+    .reasons-breakdown { margin-top: 14px; }
+    .reason-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 0.8rem; color: #9ca3af; }
+    .reason-bar-track { flex: 1; background: #1f1f2e; border-radius: 99px; height: 6px; overflow: hidden; }
+    .reason-bar-fill { height: 100%; border-radius: 99px; background: #f87171; transition: width 0.5s ease; }
+    .reason-emoji { width: 20px; text-align: center; }
+
+    .members-count { text-align: center; font-size: 0.78rem; color: #4b5563; margin-top: 12px; }
 
     /* ── Error ── */
     .error {
-      background: #2d0d0d;
-      border: 1px solid #7f1d1d;
-      border-radius: 10px;
-      color: #f87171;
-      font-size: 0.875rem;
-      padding: 10px 14px;
-      margin-top: 12px;
-      display: none;
+      background: #2d0d0d; border: 1px solid #7f1d1d; border-radius: 10px;
+      color: #f87171; font-size: 0.875rem; padding: 10px 14px; margin-top: 10px; display: none;
     }
 
-    /* ── Share row ── */
-    .share-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-    .share-row input {
-      margin: 0;
-      font-size: 0.875rem;
-      color: #a78bfa;
-      cursor: pointer;
-    }
-    .share-row .btn {
-      width: auto;
-      padding: 0 16px;
-      font-size: 0.875rem;
-      white-space: nowrap;
-    }
-
-    /* ── Back link ── */
-    .back {
-      background: none;
-      border: none;
-      color: #6b7280;
-      cursor: pointer;
-      font-size: 0.85rem;
-      margin-top: 16px;
-      text-align: center;
-      width: 100%;
-    }
+    .back { background: none; border: none; color: #6b7280; cursor: pointer; font-size: 0.85rem; margin-top: 16px; text-align: center; width: 100%; }
     .back:hover { color: #a78bfa; }
 
-    /* ── Screens ── */
     .screen { display: none; }
     .screen.active { display: block; }
   </style>
@@ -275,6 +221,35 @@
     <div class="screen active" id="screen-home">
       <h2>Create a room</h2>
       <input id="input-event" type="text" placeholder="Event name (e.g. Taylor Swift)" maxlength="100" />
+
+      <div class="rules-section">
+        <h3>Room rules</h3>
+
+        <div class="rule-row">
+          <div class="rule-label">
+            Decision threshold
+            <small>% of leave votes needed</small>
+          </div>
+          <div class="seg" id="seg-threshold">
+            <button class="active" data-value="51" onclick="setThreshold(this)">51%</button>
+            <button data-value="67" onclick="setThreshold(this)">67%</button>
+            <button data-value="100" onclick="setThreshold(this)">100%</button>
+          </div>
+        </div>
+
+        <div class="rule-row">
+          <div class="rule-label">
+            Vote cooldown
+            <small>Min. wait to change vote</small>
+          </div>
+          <div class="seg" id="seg-cooldown">
+            <button class="active" data-value="0" onclick="setCooldown(this)">None</button>
+            <button data-value="5" onclick="setCooldown(this)">5m</button>
+            <button data-value="15" onclick="setCooldown(this)">15m</button>
+          </div>
+        </div>
+      </div>
+
       <button class="btn btn-primary" onclick="createRoom()">Create room</button>
       <div id="error-home" class="error"></div>
 
@@ -296,21 +271,41 @@
 
       <div class="share-row">
         <input id="share-url" type="text" readonly onclick="this.select()" />
-        <button class="btn btn-outline" style="margin:0" onclick="copyShareUrl()">Copy</button>
+        <button class="btn btn-outline" onclick="copyShareUrl(event)">Copy</button>
       </div>
+
+      <div class="cooldown-notice" id="cooldown-notice"></div>
 
       <h2>Your vote</h2>
       <div class="vote-grid">
         <button class="vote-btn stay" id="btn-stay" onclick="castVote('stay')">
           <span class="emoji">🎵</span>Stay
         </button>
-        <button class="vote-btn leave" id="btn-leave" onclick="castVote('leave')">
+        <button class="vote-btn leave" id="btn-leave" onclick="showReasons()">
           <span class="emoji">🚪</span>Leave
         </button>
       </div>
 
+      <!-- Reason picker — shown when tapping Leave -->
+      <div class="reason-section" id="reason-section" style="display:none">
+        <h3>Why do you want to leave?</h3>
+        <div class="reason-grid">
+          <button class="reason-btn" data-reason="too_loud"    onclick="selectReason(this)">🔊 Too loud</button>
+          <button class="reason-btn" data-reason="not_my_vibe" onclick="selectReason(this)">😐 Not my vibe</button>
+          <button class="reason-btn" data-reason="tired"       onclick="selectReason(this)">😴 Tired</button>
+          <button class="reason-btn" data-reason="too_late"    onclick="selectReason(this)">🕐 Too late</button>
+          <button class="reason-btn" data-reason="other"       onclick="selectReason(this)">💬 Other</button>
+        </div>
+        <button class="btn btn-outline" style="margin-top:12px;font-size:0.875rem;padding:10px" onclick="castVote('leave')">
+          Leave anyway (no reason)
+        </button>
+      </div>
+
       <div class="results">
+        <div class="decision-banner" id="decision-banner"></div>
         <div class="verdict none" id="verdict-text">No votes yet</div>
+        <div class="threshold-label" id="threshold-label"></div>
+
         <div class="bar-row">
           <div class="bar-label">Stay</div>
           <div class="bar-track"><div class="bar-fill stay" id="bar-stay" style="width:0%"></div></div>
@@ -321,6 +316,12 @@
           <div class="bar-track"><div class="bar-fill leave" id="bar-leave" style="width:0%"></div></div>
           <div class="bar-count" id="count-leave">0</div>
         </div>
+
+        <div class="reasons-breakdown" id="reasons-breakdown" style="display:none">
+          <h3 style="margin-bottom:8px">Why people want to leave</h3>
+          <div id="reason-bars"></div>
+        </div>
+
         <div class="members-count" id="members-count"></div>
       </div>
 
@@ -330,14 +331,39 @@
   </div>
 
   <script>
-    const API = "";  // same origin — no need for full URL
-    let state = { code: null, token: null, pollTimer: null };
+    const API = "";
+    const REASON_LABELS = {
+      too_loud: "🔊 Too loud",
+      not_my_vibe: "😐 Not my vibe",
+      tired: "😴 Tired",
+      too_late: "🕐 Too late",
+      other: "💬 Other",
+    };
 
-    // ── Utilities ──────────────────────────────────────────────
+    let state = {
+      code: null, token: null, pollTimer: null,
+      threshold: 51, cooldown: 0,
+      selectedReason: null, currentVote: null, lastVerdict: null,
+      cooldownUntil: null,
+    };
 
-    function show(screenId) {
+    // ── Segmented controls ──────────────────────────────────────
+    function setThreshold(btn) {
+      document.querySelectorAll("#seg-threshold button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      state.threshold = parseInt(btn.dataset.value);
+    }
+
+    function setCooldown(btn) {
+      document.querySelectorAll("#seg-cooldown button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      state.cooldown = parseInt(btn.dataset.value);
+    }
+
+    // ── Utilities ───────────────────────────────────────────────
+    function show(id) {
       document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-      document.getElementById(screenId).classList.add("active");
+      document.getElementById(id).classList.add("active");
     }
 
     function showError(id, msg) {
@@ -347,10 +373,7 @@
     }
 
     function clearErrors() {
-      document.querySelectorAll(".error").forEach(e => {
-        e.style.display = "none";
-        e.textContent = "";
-      });
+      document.querySelectorAll(".error").forEach(e => { e.style.display = "none"; e.textContent = ""; });
     }
 
     async function api(method, path, body) {
@@ -360,23 +383,24 @@
         body: body ? JSON.stringify(body) : undefined,
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.detail || "Something went wrong");
+      if (!res.ok) throw Object.assign(new Error(data.detail || "Something went wrong"), { status: res.status });
       return data;
     }
 
-    // ── Actions ────────────────────────────────────────────────
-
+    // ── Room creation / joining ──────────────────────────────────
     async function createRoom() {
       clearErrors();
       const name = document.getElementById("input-event").value.trim();
       if (!name) return showError("error-home", "Enter an event name first");
       try {
-        const room = await api("POST", "/rooms", { event_name: name });
+        const room = await api("POST", "/rooms", {
+          event_name: name,
+          leave_threshold: state.threshold,
+          vote_cooldown: state.cooldown,
+        });
         const joined = await api("POST", `/rooms/${room.code}/join`);
-        enterRoom(joined.code, joined.event_name, joined.member_token);
-      } catch (e) {
-        showError("error-home", e.message);
-      }
+        enterRoom(joined);
+      } catch (e) { showError("error-home", e.message); }
     }
 
     async function joinRoom() {
@@ -385,45 +409,79 @@
       if (code.length !== 6) return showError("error-join", "Room codes are 6 letters");
       try {
         const joined = await api("POST", `/rooms/${code}/join`);
-        enterRoom(joined.code, joined.event_name, joined.member_token);
-      } catch (e) {
-        showError("error-join", e.message);
-      }
+        enterRoom(joined);
+      } catch (e) { showError("error-join", e.message); }
     }
 
-    function enterRoom(code, eventName, token) {
-      state.code = code;
-      state.token = token;
+    function enterRoom(joined) {
+      state.code = joined.code;
+      state.token = joined.member_token;
+      state.threshold = joined.leave_threshold;
+      state.cooldown = joined.vote_cooldown;
 
-      document.getElementById("display-code").textContent = code;
-      document.getElementById("display-event").textContent = eventName;
-
-      const shareUrl = `${location.origin}?join=${code}`;
-      document.getElementById("share-url").value = shareUrl;
+      document.getElementById("display-code").textContent = joined.code;
+      document.getElementById("display-event").textContent = joined.event_name;
+      document.getElementById("share-url").value = `${location.origin}?join=${joined.code}`;
+      document.getElementById("threshold-label").textContent =
+        `Decision at ${joined.leave_threshold}% leave votes${joined.vote_cooldown > 0 ? ` · ${joined.vote_cooldown}min cooldown` : ""}`;
 
       show("screen-vote");
       fetchResults();
       state.pollTimer = setInterval(fetchResults, 3000);
     }
 
+    // ── Voting ──────────────────────────────────────────────────
+    function showReasons() {
+      const section = document.getElementById("reason-section");
+      section.style.display = section.style.display === "none" ? "block" : "none";
+    }
+
+    function selectReason(btn) {
+      document.querySelectorAll(".reason-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      state.selectedReason = btn.dataset.reason;
+      castVote("leave");
+    }
+
     async function castVote(choice) {
+      const notice = document.getElementById("cooldown-notice");
+      // Check local cooldown
+      if (state.cooldownUntil && new Date() < new Date(state.cooldownUntil)) {
+        const mins = Math.ceil((new Date(state.cooldownUntil) - new Date()) / 60000);
+        notice.textContent = `⏱ Cooldown active — you can change your vote in ~${mins} minute${mins !== 1 ? "s" : ""}`;
+        notice.style.display = "block";
+        return;
+      }
+      notice.style.display = "none";
+
+      const body = { member_token: state.token, choice };
+      if (choice === "leave" && state.selectedReason) body.reason = state.selectedReason;
+
       try {
-        await api("POST", `/rooms/${state.code}/vote`, {
-          member_token: state.token,
-          choice,
-        });
+        const res = await api("POST", `/rooms/${state.code}/vote`, body);
+        state.currentVote = choice;
+        state.cooldownUntil = res.cooldown_until || null;
+
         document.getElementById("btn-stay").classList.toggle("selected", choice === "stay");
         document.getElementById("btn-leave").classList.toggle("selected", choice === "leave");
+        document.getElementById("reason-section").style.display = "none";
+
         fetchResults();
       } catch (e) {
-        console.error(e);
+        if (e.status === 429) {
+          notice.textContent = `⏱ ${e.message}`;
+          notice.style.display = "block";
+        }
       }
     }
 
+    // ── Results ─────────────────────────────────────────────────
     async function fetchResults() {
       if (!state.code) return;
       try {
         const r = await api("GET", `/rooms/${state.code}/results`);
+        const room = await api("GET", `/rooms/${state.code}`);
+
         const total = r.total_votes;
         const stayPct  = total ? (r.stay_count  / total) * 100 : 0;
         const leavePct = total ? (r.leave_count / total) * 100 : 0;
@@ -433,7 +491,16 @@
         document.getElementById("count-stay").textContent  = r.stay_count;
         document.getElementById("count-leave").textContent = r.leave_count;
 
+        // Animated verdict
         const v = document.getElementById("verdict-text");
+        if (r.verdict !== state.lastVerdict) {
+          if (state.lastVerdict !== null) {
+            v.classList.remove("pop", "flip");
+            void v.offsetWidth; // reflow to restart animation
+            v.classList.add("flip");
+          }
+          state.lastVerdict = r.verdict;
+        }
         v.textContent = r.verdict;
         v.className = "verdict";
         if (r.verdict.includes("LEAVE")) v.classList.add("leave");
@@ -441,34 +508,63 @@
         else if (r.verdict.includes("tie")) v.classList.add("tie");
         else v.classList.add("none");
 
-        // fetch member count separately
-        const room = await api("GET", `/rooms/${state.code}`);
+        // Decision banner
+        const banner = document.getElementById("decision-banner");
+        if (r.decision_reached) {
+          banner.style.display = "block";
+          banner.className = "decision-banner" + (r.verdict.includes("LEAVE") ? " leave" : "");
+          banner.textContent = r.verdict.includes("LEAVE")
+            ? "✓ DECISION REACHED — TIME TO LEAVE"
+            : "✓ DECISION REACHED — STAYING";
+        } else {
+          banner.style.display = "none";
+        }
+
+        // Reasons breakdown
+        const breakdown = document.getElementById("reasons-breakdown");
+        const barsEl = document.getElementById("reason-bars");
+        if (r.reasons && r.reasons.length > 0) {
+          breakdown.style.display = "block";
+          const maxCount = r.reasons[0].count;
+          barsEl.innerHTML = r.reasons.map(({ reason, count }) => `
+            <div class="reason-row">
+              <span class="reason-emoji">${REASON_LABELS[reason]?.split(" ")[0] || "❓"}</span>
+              <span style="width:90px;color:#9ca3af">${REASON_LABELS[reason]?.split(" ").slice(1).join(" ") || reason}</span>
+              <div class="reason-bar-track">
+                <div class="reason-bar-fill" style="width:${(count/maxCount)*100}%"></div>
+              </div>
+              <span style="color:#6b7280;min-width:16px">${count}</span>
+            </div>
+          `).join("");
+        } else {
+          breakdown.style.display = "none";
+        }
+
         document.getElementById("members-count").textContent =
           `${room.member_count} ${room.member_count === 1 ? "person" : "people"} in room · ${total} ${total === 1 ? "vote" : "votes"}`;
-      } catch (e) {
-        console.error(e);
-      }
+      } catch (e) { console.error(e); }
     }
 
     function goHome() {
       clearInterval(state.pollTimer);
-      state = { code: null, token: null, pollTimer: null };
+      state = { code: null, token: null, pollTimer: null, threshold: 51, cooldown: 0,
+                selectedReason: null, currentVote: null, lastVerdict: null, cooldownUntil: null };
       document.getElementById("input-event").value = "";
       document.getElementById("input-code").value = "";
+      document.getElementById("reason-section").style.display = "none";
+      document.querySelectorAll(".reason-btn").forEach(b => b.classList.remove("selected"));
       clearErrors();
       show("screen-home");
     }
 
-    function copyShareUrl() {
-      const url = document.getElementById("share-url").value;
-      navigator.clipboard.writeText(url).then(() => {
-        const btn = event.target;
-        btn.textContent = "Copied!";
-        setTimeout(() => btn.textContent = "Copy", 1500);
+    function copyShareUrl(e) {
+      navigator.clipboard.writeText(document.getElementById("share-url").value).then(() => {
+        e.target.textContent = "Copied!";
+        setTimeout(() => e.target.textContent = "Copy", 1500);
       });
     }
 
-    // ── Auto-join from URL ──────────────────────────────────────
+    // Auto-join from URL
     const params = new URLSearchParams(location.search);
     if (params.get("join")) {
       document.getElementById("input-code").value = params.get("join");
