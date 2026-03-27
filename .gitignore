@@ -5,3 +5,4 @@ __pycache__/
 exitvote.db
 .coverage
 htmlcov/
+exitvote.db*
