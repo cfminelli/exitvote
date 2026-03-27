@@ -65,14 +65,18 @@
     .rule-label { font-size: 0.875rem; color: #d1d5db; }
     .rule-label small { display: block; color: #6b7280; font-size: 0.75rem; margin-top: 2px; }
 
-    /* Segmented controls */
-    .seg { display: flex; gap: 4px; background: #0a0a0f; border-radius: 10px; padding: 4px; }
-    .seg button {
-      flex: 1; border: none; border-radius: 7px; cursor: pointer;
-      font-size: 0.8rem; font-weight: 600; padding: 7px 10px;
-      background: transparent; color: #6b7280; transition: all 0.15s;
+    /* Number inputs for rules */
+    .rule-input-wrap { display: flex; align-items: center; gap: 6px; }
+    .rule-input {
+      width: 64px; background: #0a0a0f; border: 1px solid #2a2a3e;
+      border-radius: 8px; color: #a78bfa; font-size: 0.95rem; font-weight: 700;
+      padding: 7px 10px; outline: none; text-align: center;
+      -moz-appearance: textfield;
     }
-    .seg button.active { background: #a78bfa; color: #0a0a0f; }
+    .rule-input::-webkit-outer-spin-button,
+    .rule-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .rule-input:focus { border-color: #a78bfa; }
+    .rule-unit { color: #6b7280; font-size: 0.8rem; }
 
     /* ── Buttons ── */
     .btn {
@@ -228,24 +232,22 @@
         <div class="rule-row">
           <div class="rule-label">
             Decision threshold
-            <small>% of leave votes needed</small>
+            <small>% of leave votes needed (1–100)</small>
           </div>
-          <div class="seg" id="seg-threshold">
-            <button class="active" data-value="51" onclick="setThreshold(this)">51%</button>
-            <button data-value="67" onclick="setThreshold(this)">67%</button>
-            <button data-value="100" onclick="setThreshold(this)">100%</button>
+          <div class="rule-input-wrap">
+            <input id="input-threshold" class="rule-input" type="number" min="1" max="100" value="51" />
+            <span class="rule-unit">%</span>
           </div>
         </div>
 
         <div class="rule-row">
           <div class="rule-label">
             Vote cooldown
-            <small>Min. wait to change vote</small>
+            <small>Minutes before changing vote (0 = none)</small>
           </div>
-          <div class="seg" id="seg-cooldown">
-            <button class="active" data-value="0" onclick="setCooldown(this)">None</button>
-            <button data-value="5" onclick="setCooldown(this)">5m</button>
-            <button data-value="15" onclick="setCooldown(this)">15m</button>
+          <div class="rule-input-wrap">
+            <input id="input-cooldown" class="rule-input" type="number" min="0" max="60" value="0" />
+            <span class="rule-unit">min</span>
           </div>
         </div>
       </div>
@@ -347,19 +349,6 @@
       cooldownUntil: null,
     };
 
-    // ── Segmented controls ──────────────────────────────────────
-    function setThreshold(btn) {
-      document.querySelectorAll("#seg-threshold button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      state.threshold = parseInt(btn.dataset.value);
-    }
-
-    function setCooldown(btn) {
-      document.querySelectorAll("#seg-cooldown button").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      state.cooldown = parseInt(btn.dataset.value);
-    }
-
     // ── Utilities ───────────────────────────────────────────────
     function show(id) {
       document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
@@ -392,11 +381,15 @@
       clearErrors();
       const name = document.getElementById("input-event").value.trim();
       if (!name) return showError("error-home", "Enter an event name first");
+      const threshold = parseInt(document.getElementById("input-threshold").value) || 51;
+      const cooldown  = parseInt(document.getElementById("input-cooldown").value)  || 0;
+      if (threshold < 1 || threshold > 100) return showError("error-home", "Threshold must be between 1 and 100");
+      if (cooldown  < 0 || cooldown  > 60)  return showError("error-home", "Cooldown must be between 0 and 60 minutes");
       try {
         const room = await api("POST", "/rooms", {
           event_name: name,
-          leave_threshold: state.threshold,
-          vote_cooldown: state.cooldown,
+          leave_threshold: threshold,
+          vote_cooldown: cooldown,
         });
         const joined = await api("POST", `/rooms/${room.code}/join`);
         enterRoom(joined);
