@@ -6,11 +6,16 @@ Open that in your browser to try every endpoint without any extra tool.
 """
 
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from src.database import init_db
 from src.routes import rooms, votes
+
+STATIC_DIR = Path(__file__).parent.parent / "static"
 
 
 @asynccontextmanager
@@ -29,7 +34,9 @@ app = FastAPI(
 app.include_router(rooms.router)
 app.include_router(votes.router)
 
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
-@app.get("/", tags=["health"])
-def root() -> dict:
-    return {"status": "ok", "docs": "/docs"}
+
+@app.get("/", include_in_schema=False)
+def root() -> FileResponse:
+    return FileResponse(STATIC_DIR / "index.html")
